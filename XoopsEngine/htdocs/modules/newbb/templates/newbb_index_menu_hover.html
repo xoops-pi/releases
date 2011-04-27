@@ -1,0 +1,23 @@
+	<div id="mainoption" class="menu">
+	<table><tr><td>
+		<a class="item" href="<{$mark_read}>"><{$smarty.const._MD_MARK_ALL_FORUMS}>&nbsp;<{$smarty.const._MD_MARK_READ}></a>
+		<a class="item" href="<{$mark_unread}>"><{$smarty.const._MD_MARK_ALL_FORUMS}>&nbsp;<{$smarty.const._MD_MARK_UNREAD}></a>
+		<div class="separator"></div>
+		<a class="item" href="<{$post_link}>"><{$smarty.const._MD_VIEW}>&nbsp;<{$smarty.const._MD_ALLPOSTS}></a>
+		<a class="item" href="<{$newpost_link}>"><{$smarty.const._MD_VIEW}>&nbsp;<{$smarty.const._MD_NEWPOSTS}></a>
+		<a class="item" href="<{$all_link}>"><{$smarty.const._MD_VIEW}>&nbsp;<{$smarty.const._MD_ALL}></a>
+		<a class="item" href="<{$digest_link}>"><{$smarty.const._MD_VIEW}>&nbsp;<{$smarty.const._MD_DIGEST}></a>
+		<a class="item" href="<{$unreplied_link}>"><{$smarty.const._MD_VIEW}>&nbsp;<{$smarty.const._MD_UNREPLIED}></a>
+		<a class="item" href="<{$unread_link}>"><{$smarty.const._MD_VIEW}>&nbsp;<{$smarty.const._MD_UNREAD}></a>
+		<div class="separator"></div>
+		<{foreachq item=menu from=$menumode_other}>
+		<a class="item" href="<{$menu.link}>"><{$menu.title}></a>
+		<{/foreach}>
+		<{if $forum_index_cpanel}>
+		<div class="separator"></div>
+		<a class="item" href="<{$forum_index_cpanel.link}>"><{$forum_index_cpanel.name}></a>
+		<{/if}>
+	</td></tr></table>
+	</div>
+	<script type="text/javascript">document.getElementById("mainoption").onmouseout = closeMenu;</script>
+	<div class="menubar"><a href="" onclick="openMenu(event, 'mainoption');return false;"><{$smarty.const._MD_MAINFORUMOPT}></a></div>

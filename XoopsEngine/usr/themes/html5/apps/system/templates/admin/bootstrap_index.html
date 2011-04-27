@@ -1,0 +1,22 @@
+<section id="bootstrap" class="system">
+   <hgroup>
+		<h4><{$title}></h4>
+	</hgroup>
+	<div class="message admin-help"><{$message}></div>
+	<article class="admin-content">
+		<ul>
+		<{foreach item=category key=name from=$bootstraps}>
+		    <li><div style="padding: 5px 0;">
+		            <{__ text=$name}>
+		            <ul>
+		                <{foreach item=url key=bootstrap from=$category}>
+		                    <li><{$bootstrap}> <a href="<{$url}>" title="<{_ text=Edit}>"><{_ text=Edit}></a>
+		                    </li>
+		                <{/foreach}>
+		            </ul>
+		        </div>
+		    </li>
+		<{/foreach}>
+		</ul>
+	</article>
+</section>

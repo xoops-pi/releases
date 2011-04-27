@@ -1,0 +1,20 @@
+
+<div>
+
+<{foreach item=blk name=blklist from=$block.content}>
+    <div style="float: left; padding: 5px;">
+            <div class="block-container<{if !empty($blk.style)}> <{$blk.style}><{/if}>">
+                <{if !empty($blk.title)}>
+                    <div class="block-title">
+                        <{if !empty($blk.link)}><a href="<{$blk.link}>" title="<{$blk.title}>"><{/if}>
+                            <{$blk.title}>
+                        <{if !empty($blk.link)}></a><{/if}>
+                    </div>
+                <{/if}>
+                <div class="block-content"><{$blk.content}></div>
+            </div>
+    </div>
+
+<{/foreach}>
+
+</div>

@@ -1,0 +1,79 @@
+.system {}
+.default {}
+.user {}
+.search {}
+.mvc {}
+.comments {}
+
+
+.error {
+	margin: 50px;
+	border-radius: 5px;
+   -moz-border-radius: 5px;
+   -webkit-border-radius: 5px;	
+}
+
+/* for system apps*/
+#login {}
+#suspended {}
+#dummy {}
+
+/* for default apps */
+#contact {}
+#about {}
+#index {}
+#feed {}
+#denied {}
+#401 {}
+#403 {}
+#404 {}
+
+/* for user apps */
+.login {}
+.register {}
+.profile {}
+
+/* for search apps*/
+#search {}
+
+/* for mvc apps*/
+#mvc {}
+
+
+.user-content {
+	background-color: #fcfcfc;
+	padding: 10px;
+	margin: 10px;
+	border: 1px solid #f1f1f1;
+	border-radius: 5px;
+   -moz-border-radius: 5px;
+   -webkit-border-radius: 5px;
+}
+
+.comments {
+	background-color: #fcfcfc;
+	padding: 10px;
+	margin: 10px;
+	border: 1px solid #f1f1f1;
+	border-radius: 5px;
+   -moz-border-radius: 5px;
+   -webkit-border-radius: 5px;
+}
+
+.notification {
+	background-color: #fcfcfc;
+	padding: 10px;
+	margin: 10px;
+	border: 1px solid #f1f1f1;
+	border-radius: 5px;
+   -moz-border-radius: 5px;
+   -webkit-border-radius: 5px;
+}
+
+.contact-form {
+	margin: 10px;
+}
+
+.user-error {
+	
+}

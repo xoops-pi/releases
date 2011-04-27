@@ -1,0 +1,233 @@
+<div id="forum_header">
+	<a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/index.php"><{$forum_index_title}></a>
+	<{if $parent_forum}>
+		> 
+		<a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/viewforum.php?forum=<{$parent_forum}>"><{$parent_name}></a>
+		> 
+		<a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/viewforum.php?forum=<{$forum_id}>"><{$forum_name}></a>
+	<{elseif $forum_name}>
+		> <a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/viewforum.php?forum=<{$forum_id}>"><{$forum_name}></a>
+	<{/if}>
+	<{if $current}>
+		>
+		<a href="<{$current.link}>"><{$current.title}></a>
+	<{/if}>
+</div>
+
+
+<{if $mode gt 1}>
+<form name="form_topics_admin" action="action.topic.php" method="POST" onsubmit="javascript: if(window.document.form_topics_admin.op.value &lt; 1){return false;}">
+<{/if}>
+
+<{if $viewer_level gt 1}>
+<div style="padding: 5px;float: right; text-align:right;" id="admin">
+<{if $mode gt 1}>
+<{$smarty.const._ALL}>: <input type="checkbox" name="topic_check1" id="topic_check1" value="1" onclick="xoopsCheckAll('form_topics_admin', 'topic_check1');" /> 
+<select name="op">
+	<option value="0"><{$smarty.const._SELECT}></option>
+	<option value="delete"><{$smarty.const._DELETE}></option>
+	<{if $status eq "pending"}>
+		<option value="approve"><{$smarty.const._MD_APPROVE}></option>
+		<option value="move"><{$smarty.const._MD_MOVE}></option>
+	<{elseif $status eq "deleted"}>
+		<option value="restore"><{$smarty.const._MD_RESTORE}></option>
+	<{else}>
+		<option value="move"><{$smarty.const._MD_MOVE}></option>
+	<{/if}>
+</select>  
+<input type="hidden" name="forum_id" value="<{$forum_id}>" />
+<input type="submit" name="submit" value="<{$smarty.const._SUBMIT}>" /> | 
+<a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/viewall.php" target="_self" title="<{$smarty.const._MD_TYPE_VIEW}>"><{$smarty.const._MD_TYPE_VIEW}></a>
+<{elseif $mode eq 1}>
+<a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/viewall.php?status=active#admin" target="_self" title="<{$smarty.const._MD_TYPE_ADMIN}>"><{$smarty.const._MD_TYPE_ADMIN}></a> | 
+<a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/viewall.php?status=pending#admin" target="_self" title="<{$smarty.const._MD_TYPE_PENDING}>"><{$smarty.const._MD_TYPE_PENDING}></a> | 
+<a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/viewall.php?status=deleted#admin" target="_self" title="<{$smarty.const._MD_TYPE_DELETED}>"><{$smarty.const._MD_TYPE_DELETED}></a> | 
+<a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/moderate.php" target="_self" title="<{$smarty.const._MD_TYPE_SUSPEND}>"><{$smarty.const._MD_TYPE_SUSPEND}></a>
+<{else}>
+<a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/viewall.php?mode=1#admin" target="_self" title="<{$smarty.const._MD_TYPE_VIEW}>"><{$smarty.const._MD_TYPE_VIEW}></a>
+<{/if}>
+</div>
+<br />
+<{else}>
+<br />
+<{/if}>
+<div class="clear"></div>
+
+<div>
+<div class="dropdown">
+<{if $menumode eq 0}>
+
+	<select
+		name="topicoption" id="topicoption"
+		class="menu"
+		onchange="javascript: if(this.options[this.selectedIndex].value.length >0 )	{ window.document.location=this.options[this.selectedIndex].value;}"
+	>
+		<option value=""><{$smarty.const._MD_TOPICOPTION}></option>
+		<option value="<{$post_link}>"><{$smarty.const._MD_VIEW}>&nbsp;<{$smarty.const._MD_ALLPOSTS}></option>
+		<option value="<{$newpost_link}>"><{$smarty.const._MD_VIEW}>&nbsp;<{$smarty.const._MD_NEWPOSTS}></option>
+		<{foreach item=filter from=$filters}>
+		<option value="<{$filter.link}>"><{$filter.title}></option>
+		<{/foreach}>
+		<option value="">--------</option>
+		<{foreach item=filter from=$types}>
+		<option value="<{$filter.link}>"><{$filter.title}></option>
+		<{/foreach}>
+		<option value="">--------</option>
+		<{foreachq item=menu from=$menumode_other}>
+		<option value="<{$menu.link}>"><{$menu.title}></option>
+		<{/foreach}>
+	</select>
+
+<{elseif $menumode eq 1}>
+	<div id="topicoption" class="menu">
+	<table><tr><td>
+		<a class="item" href="<{$post_link}>"><{$smarty.const._MD_VIEW}>&nbsp;<{$smarty.const._MD_ALLPOSTS}></a>
+		<a class="item" href="<{$newpost_link}>"><{$smarty.const._MD_VIEW}>&nbsp;<{$smarty.const._MD_NEWPOSTS}></a>
+		<a class="item" href="<{$all_link}>"><{$smarty.const._MD_VIEW}>&nbsp;<{$smarty.const._MD_ALL}></a>
+		<a class="item" href="<{$digest_link}>"><{$smarty.const._MD_VIEW}>&nbsp;<{$smarty.const._MD_DIGEST}></a>
+		<a class="item" href="<{$unreplied_link}>"><{$smarty.const._MD_VIEW}>&nbsp;<{$smarty.const._MD_UNREPLIED}></a>
+		<a class="item" href="<{$unread_link}>"><{$smarty.const._MD_VIEW}>&nbsp;<{$smarty.const._MD_UNREAD}></a>
+		<div class="separator"></div>
+		<{foreachq item=menu from=$menumode_other}>
+		<a class="item" href="<{$menu.link}>"><{$menu.title}></a>
+		<{/foreach}>
+	</td></tr></table>
+	</div>
+	<script type="text/javascript">document.getElementById("topicoption").onmouseout = closeMenu;</script>
+	<div class="menubar"><a href="" onclick="openMenu(event, 'topicoption');return false;"><{$smarty.const._MD_TOPICOPTION}></a></div>
+
+<{elseif $menumode eq 2}>
+	<div class="menu">
+		<ul>
+			<li>
+				<div class="item"><strong><{$smarty.const._MD_TOPICOPTION}></strong></div>
+				<ul>
+				<li><table><tr><td>
+	                <div class="item"><a href="<{$post_link}>"><{$smarty.const._MD_VIEW}>&nbsp;<{$smarty.const._MD_ALLPOSTS}></a></div>
+	                <div class="item"><a href="<{$newpost_link}>"><{$smarty.const._MD_VIEW}>&nbsp;<{$smarty.const._MD_NEWPOSTS}></a></div>
+	                <div class="item"><a href="<{$all_link}>"><{$smarty.const._MD_VIEW}>&nbsp;<{$smarty.const._MD_ALL}></a></div>
+	                <div class="item"><a href="<{$digest_link}>"><{$smarty.const._MD_VIEW}>&nbsp;<{$smarty.const._MD_DIGEST}></a></div>
+	                <div class="item"><a href="<{$unreplied_link}>"><{$smarty.const._MD_VIEW}>&nbsp;<{$smarty.const._MD_UNREPLIED}></a></div>
+	                <div class="item"><a href="<{$unread_link}>"><{$smarty.const._MD_VIEW}>&nbsp;<{$smarty.const._MD_UNREAD}></a></div>
+					<div class="separator"></div>
+					<{foreachq item=menu from=$menumode_other}>
+					<div class="item"><a href="<{$menu.link}>"><{$menu.title}></a></div>
+					<{/foreach}>
+				</td></tr></table></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+
+<{/if}>
+</div>
+<div style="padding: 5px;float: right; text-align:right;">
+<{$pagenav}>
+</div>
+</div>
+<div class="clear"></div>
+<br />
+<br />
+
+<table class="outer" cellpadding="6" cellspacing="1" border="0" width="100%" align="center">
+
+    <tr class="head" align="left">
+	      <td  width="5%" colspan="2">
+	      <{if $mode gt 1}>
+			<{$smarty.const._ALL}>: <input type="checkbox" name="topic_check" id="topic_check" value="1" onclick="xoopsCheckAll('form_topics_admin', 'topic_check');" /> 
+	      <{else}>
+	      &nbsp;
+	      <{/if}>
+	      </td>
+		<td>&nbsp;<strong><a href="<{$headers.topic.link}>"><{$headers.topic.title}></a></strong></td>
+		<td width="15%" align="center" nowrap="nowrap"><strong><a href="<{$headers.forum.link}>"><{$headers.forum.title}></a></strong></td>
+		<td width="5%" align="center" nowrap="nowrap"><strong><a href="<{$headers.replies.link}>"><{$headers.replies.title}></a></strong></td>
+		<td width="10%" align="center" nowrap="nowrap"><strong><a href="<{$headers.poster.link}>"><{$headers.poster.title}></a></strong></td>
+		<td width="5%" align="center" nowrap="nowrap"><strong><a href="<{$headers.views.link}>"><{$headers.views.title}></a></strong></td>
+		<td width="15%" align="center" nowrap="nowrap"><strong><a href="<{$headers.lastpost.link}>"><{$headers.lastpost.title}></a></strong></td>
+	</tr>
+
+  <!-- start forum topic -->
+<{foreachq name=loop item=topic from=$topics}>
+  <tr class="<{cycle values="even,odd"}>">
+    <td width="4%" align="center">
+	      <{if $mode gt 1}>
+			<input type="checkbox" name="topic_id[]" id="topic_id[<{$topic.topic_id}>]" value="<{$topic.topic_id}>" />
+	      <{else}>
+			<{$topic.topic_folder}>
+	      <{/if}>
+    </td>
+    <td width="4%" align="center"><{$topic.topic_icon}></td>
+    <td>&nbsp;<a href="<{$topic.topic_link}>">
+		<{if $topic.allow_prefix AND $topic.topic_subject}>
+		<{$topic.topic_subject}>
+		<{/if}>
+		<{$topic.topic_title}></a><{$topic.attachment}> <{$topic.topic_page_jump}>
+	</td>
+    <td align="left" valign="middle"><{$topic.topic_forum_link}></td>
+    <td align="center" valign="middle"><{$topic.topic_replies}></td>
+    <td align="center" valign="middle"><{$topic.topic_poster}></td>
+    <td align="center" valign="middle"><{$topic.topic_views}></td>
+    <td align="right" valign="middle"><{$topic.topic_last_posttime}><br />
+		<{$smarty.const._MD_BY}> <{$topic.topic_last_poster}>
+	</td>
+  </tr>
+<{/foreach}>
+  <!-- end forum topic -->
+	
+	<{if $mode gt 1}>
+	</form>
+	<{/if}>
+
+  <tr class="foot">
+    <td colspan="8" align="center">
+    <{strip}>
+      <form method="get" action="<{$selection.action}>">
+        <strong><{$smarty.const._MD_SORTEDBY}></strong>&nbsp;
+        <{$selection.sort}>&nbsp;
+        <{$selection.order}>&nbsp;
+        <{$selection.since}>&nbsp;
+        <{foreach item=hidval key=hidvar from=$selection.vars}>
+        	<input type="hidden" name="$hidvar" value="<{$hidval}>" />
+        <{/foreach}>
+        <input type="submit" name="refresh" value="<{$smarty.const._SUBMIT}>" />
+      </form>
+	<{/strip}>
+	</td>
+  </tr>
+</table>
+<!-- end forum main table -->
+
+<{if $pagenav}>
+<div style="float: right; text-align:right; padding: 5px;"><{$pagenav}></div>
+<br />
+<{/if}>
+<div class="clear"></div>
+
+<div>
+<div style="float: left; text-align: left;">
+	<{$img_newposts}> = <{$smarty.const._MD_NEWPOSTS}> (<{$img_hotnewposts}> = <{$smarty.const._MD_MORETHAN}>) <br />
+	<{$img_folder}> = <{$smarty.const._MD_NONEWPOSTS}> (<{$img_hotfolder}> = <{$smarty.const._MD_MORETHAN2}>) <br />
+	<{$img_locked}> = <{$smarty.const._MD_TOPICLOCKED}> <br />
+	<{$img_sticky}> = <{$smarty.const._MD_TOPICSTICKY}> <br />
+	<{$img_digest}> = <{$smarty.const._MD_TOPICDIGEST}> <br />
+	<{$img_poll}> = <{$smarty.const._MD_TOPICHASPOLL}>
+</div>
+<div style="float: right; text-align: right;">
+	<form action="search.php" method="get">
+		<input name="term" id="term" type="text" size="15" />
+        <{foreach item=hidval key=hidvar from=$search}>
+        	<input type="hidden" name="$hidvar" value="<{$hidval}>" />
+        <{/foreach}>
+		<input type="submit" class="formButton" value="<{$smarty.const._MD_SEARCH}>" /><br />
+		[<a href="<{$xoops_url}>/modules/<{$xoops_dirname}>/search.php"><{$smarty.const._MD_ADVSEARCH}></a>]
+	</form><br />
+	<{$forum_jumpbox}>
+</div>
+</div>
+<div class="clear"></div>
+<br />
+
+<{if $online}><{includeq file="db:newbb_online.html"}><{/if}>
+<{includeq file='db:system_notification_select.html'}>
+<!-- end module contents -->

@@ -1,0 +1,13 @@
+<section id="resource" class="system">
+	<article class="admin-content">
+		<ul><{_ text=Resources}>
+		<{foreach item=section key=sect from=$sections}>
+		    <li class="padding5">
+		    <{$section.title}>
+		    <{if $section.count}> (<{$section.count}>) <{/if}>
+		    <{if $section.url}><a href="<{$section.url}>" title="<{$section.title}>"><{_ text=Expand}></a><{/if}>
+		    </li>
+		<{/foreach}>
+		</ul>
+	</article>
+</section>

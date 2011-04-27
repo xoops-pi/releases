@@ -1,0 +1,11 @@
+<section id="menu" class="system">
+	<article class="admin-content">
+		<ul><{_ text=Menus}>
+		<{foreach item=menu key=name from=$menus}>
+		    <li>
+		        <a href="<{$menu.url}>" title="<{$menu.title}>"><{$menu.title}></a>
+		    </li>
+		<{/foreach}>
+		</ul>
+	</article>
+</section>

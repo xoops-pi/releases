@@ -1,0 +1,21 @@
+<section id="page" class="system">
+
+   <article class="admin-content">
+		<{_ text="Select Section:"}>
+		<select name=section onChange="location=this.options[this.selectedIndex].value">
+		<{foreach key=name item=sect from=$sections}>
+		    <option value="<{$sect.url}>"
+		    <{if $name eq $section}>selected<{/if}>
+		        ><{$sect.name}></option>
+		<{/foreach}>
+		</select>
+	</article>
+	
+	<article class="admin-content">
+		<{include file="app/system/form.html" xoopsForm=$page_form_list}>
+	</article>
+	
+	<div class="admin-bottom">
+	    <a class="admin-bottom-icone" href="<{adminUrl action=add controller=page module=$dirname section=$section}>" title="<{_ text='Add page'}>"><{_ text='Add page'}></a>
+	</div>
+</section>

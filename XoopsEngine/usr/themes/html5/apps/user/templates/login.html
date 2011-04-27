@@ -1,0 +1,25 @@
+<{headLink href="app/user/resources/scripts/login.css"}>
+<{headScript src='app/user/resources/scripts/login.js'}>
+
+<section id="login" class="user">
+
+	<hgroup>
+		<h2><{$title}></h2>
+	</hgroup>
+	
+	<{if $message}>
+		<article class="user-content login-message">
+		   <{$message}>
+		</article>
+	<{/if}>
+
+	<article class="user-content login-form">
+		<{$xoopsLogin}>
+	</article>
+
+	<article class="user-content">
+	    <{_ text="If you don't have an account yet, please register one:"}> <a href="<{appUrl route=register}>"><{_ text=Register}></a>
+	</article>
+
+
+</section>

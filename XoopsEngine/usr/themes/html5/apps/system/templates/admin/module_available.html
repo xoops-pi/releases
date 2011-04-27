@@ -1,0 +1,41 @@
+<section id="module" class="system">
+	<article class="admin-content">
+		<{if $modules_install}>
+		<hgroup>
+			<h3><{_ text="Modules Available for Installation"}></h3>
+		</hgroup>
+		<table>
+		    <tr>
+		        <th><{_ text=Logo}></th>
+		        <th><{_ text=Name}></th>
+		        <th><{_ text=Version}></th>
+		        <th><{_ text=Status}></th>
+		        <th><{_ text=Install}></th>
+		        <th><{_ text=Clone}></th>
+		    </tr>
+		<{foreach key=dirname item=module from=$modules_install}>
+		    <tr>
+		        <td><{htmlImage src=$module.logo alt=$module.name}></td>
+		        <td><{$module.name}></td>
+		        <td><{$module.version}>
+		            <{if $module.upgrade > 0}>
+		                <br /><a href="<{$module.download}>" rel="external" title="<{_ text=Upgrade}>"><{_ text=Upgrade}></a>
+		            <{/if}>
+		        </td>    
+		        <td><{$module.status}></td>
+		        <td><a href="<{adminUrl module=system controller=module action=install dirname=$dirname}>" title="<{_ text=Install}>"><{_ text=Install}></a></td>
+		        <td>
+		            <{if $module.type == "app"}>
+		                <a href="<{adminUrl module=system controller=module action=clone parent=$dirname}>" title="<{_ text=Clone}>"><{_ text=Clone}></a>
+		            <{/if}>
+		        </td>    
+		    </tr>
+		<{/foreach}>
+		</table>
+		<{else}>
+			 <hgroup>
+			    <h4><{_ text="There is no module available."}></h4>
+		    </hgroup>
+		<{/if}>
+	</article>
+</section>

@@ -1,0 +1,33 @@
+<?php
+/**
+ * Newbb module
+ *
+ * You may not change or alter any portion of this comment or credits
+ * of supporting developers from this source code or any supporting source code 
+ * which is considered copyrighted (c) material of the original comment or credit authors.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ *
+ * @copyright       The XOOPS Project http://sourceforge.net/projects/xoops/
+ * @license         http://www.fsf.org/copyleft/gpl.html GNU public license
+ * @package         newbb
+ * @since           4.0
+ * @author          Taiwen Jiang <phppp@users.sourceforge.net>
+ * @version         $Id: digest.php 2175 2008-09-23 14:07:03Z phppp $
+ */
+ 
+// Why the skip-DB-security check defined only for XMLRPC? We also need it!!! ~_*
+if (!defined('XOOPS_XMLRPC')) define('XOOPS_XMLRPC', 1);
+ob_start();
+include_once "header.php";
+if ($xoopsModuleConfig['email_digest'] == 0) {
+    echo "<br />Not set";
+    return false;
+}
+$digest_handler =& xoops_getmodulehandler('digest', 'newbb');
+$msg = $digest_handler->process();
+$msg .= ob_get_contents();
+ob_end_clean();
+echo "<br />" . $msg;
+?>

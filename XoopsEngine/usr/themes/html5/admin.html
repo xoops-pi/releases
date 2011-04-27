@@ -1,0 +1,54 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<{$xoops_langcode}>" lang="<{$xoops_langcode}>">
+<head>
+<{$headMeta}>
+<{$headTitle}>
+<{$headLink}>
+<{$headScript}>
+<{$headStyle}>
+</head>
+<body id="<{$xoops_dirname}>" class="<{$xoops_langcode}>">
+
+<!-- Start Header -->
+<header id="banner" class="header">
+    <div class="container_12">
+        <h1><a href="<{absUrl path=www}>" title="<{$xoops_sitename}>"><{$xoops_sitename}></a></h1>
+        <div class="clear"></div>
+
+    <{navigation}>
+
+
+    </div>
+</header>
+<!-- End header -->
+
+<!-- <div class="line"></div> -->
+
+<section class="container_12" id="header">
+
+    <{if isset($side_menu)}>
+        <aside class="grid_4">
+        <!-- Start left blocks loop -->
+            <{include file="side_menu.html"}>
+        <!-- End left blocks loop -->
+        </aside>
+        <section class="grid_8">
+    <{else}>
+        <section class="grid_12">
+    <{/if}>
+        <!-- Start content module page -->
+            <{if $xoops_contents && ($xoops_contents != ' ')}><section id="content"><{$xoops_contents}></section><{/if}>
+        <!-- End content module -->
+    </section>
+    <div class="clear"></div>
+</section>
+
+    <!-- Start footer -->
+    <footer class="container_12">
+        <div class="grid_12"><{$xoops_footer}></div>
+        <div class="clear"></div>
+    </footer>
+    <!-- End footer -->
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+CBB 4.0 RC Release
+
+The CBB Team is pleased to announce the release of CBB 4.0 RC.
+The CBB module, or newbb, is the forum module for XOOPS platform. It has been designed and developed upon the combination of features, flexibity, permission control and performance for high traffic volume.
+This release has been mainly focused on code refactoring and performance improvement. XOOPS 2.3+ is required.
+
+== Installing/Upgrading ==
+The module can be upgraded from any version of newbb and CBB.
+You should be able to upgrade your module by simply running module update from backend.
+
+== Help And Support ==
+http://cbb.xoopsforge.com
+
+
+The CBB Team
+http://xoopsforge.com
+October 12th, 2008

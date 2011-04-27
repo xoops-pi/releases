@@ -1,0 +1,40 @@
+	<{if $type_options}>
+	<div class="menu">
+		<ul>
+			<li>
+				<div class="item"><strong><{$smarty.const._MD_NEWBB_TYPE}></strong></div>
+				<ul>
+				<li><table><tr><td>
+					<{foreachq item=opt from=$type_options}>
+					<div class="item"><a href="<{$opt.link}>"><{$opt.title}></a></div>
+					<{/foreach}>
+				</td></tr></table></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	<{/if}>
+	
+	<div class="menu">
+		<ul>
+			<li>
+				<div class="item"><strong><{$smarty.const._MD_FORUMOPTION}></strong></div>
+				<ul>
+				<li><table><tr><td>
+	                <div class="item"><a href="<{$mark_read}>"><{$smarty.const._MD_MARK_ALL_TOPICS}>&nbsp;<{$smarty.const._MD_MARK_READ}></a></div>
+	                <div class="item"><a href="<{$mark_unread}>"><{$smarty.const._MD_MARK_ALL_TOPICS}>&nbsp;<{$smarty.const._MD_MARK_UNREAD}></a></div>
+					<div class="separator"></div>
+	                <div class="item"><a href="<{$post_link}>"><{$smarty.const._MD_VIEW}>&nbsp;<{$smarty.const._MD_ALLPOSTS}></a></div>
+	                <div class="item"><a href="<{$newpost_link}>"><{$smarty.const._MD_VIEW}>&nbsp;<{$smarty.const._MD_NEWPOSTS}></a></div>
+	                <div class="item"><a href="<{$all_link}>"><{$smarty.const._MD_VIEW}>&nbsp;<{$smarty.const._MD_ALL}></a></div>
+	                <div class="item"><a href="<{$digest_link}>"><{$smarty.const._MD_VIEW}>&nbsp;<{$smarty.const._MD_DIGEST}></a></div>
+	                <div class="item"><a href="<{$unreplied_link}>"><{$smarty.const._MD_VIEW}>&nbsp;<{$smarty.const._MD_UNREPLIED}></a></div>
+					<div class="separator"></div>
+					<{foreachq item=menu from=$menumode_other}>
+					<div class="item"><a href="<{$menu.link}>"><{$menu.title}></a></div>
+					<{/foreach}>
+				</td></tr></table></li>
+				</ul>
+			</li>
+		</ul>
+	</div>

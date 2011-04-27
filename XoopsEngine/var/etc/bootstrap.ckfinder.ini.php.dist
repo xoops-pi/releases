@@ -1,0 +1,14 @@
+;<?php __halt_compiler();
+
+[production]
+
+; session
+resources.session.config = "session"
+
+[staging : production]
+
+[development : production]
+
+[debug : production]
+
+[qa : development]

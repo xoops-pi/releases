@@ -1,0 +1,20 @@
+<section id="preference" class="system">
+	<hgroup>
+		<h4><{$title}></h4>
+	</hgroup>	
+	<article class="admin-content">
+		<ul>
+		<{foreach item=category from=$categories}>
+		    <li>
+		        <div style="padding: 5px 0;">
+		            <{_ text="<{$category.name}>"}>
+		            <a href="<{adminUrl module=system controller=preference action=system category=<{$category.key}>}>" title="<{_ text=Manage}>"><{_ text=Manage}></a>
+		            <{if !empty($category.description)}>
+		                <br /><{_ text="<{$category.description}>"}>
+		            <{/if}>
+		        </div>
+		    </li>
+		<{/foreach}>
+		</ul>
+	</article>
+</section>

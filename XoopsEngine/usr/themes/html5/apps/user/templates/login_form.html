@@ -1,0 +1,20 @@
+<{headLink href="app/user/resources/scripts/login.css"}>
+<{headScript src='app/user/resources/scripts/login.js'}>
+
+<section id="login" class="user">
+
+	<hgroup>
+		<h2><{$title}></h2>
+	</hgroup>
+
+	<{if !empty($message)}>
+	<article class="user-content login-message">
+	   <{$message}>
+	</article>
+	<{/if}>
+
+	<article class="user-content login-form">
+		<{$xoopsLogin}>
+	</article>
+
+</section>

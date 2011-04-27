@@ -1,0 +1,16 @@
+<section id="preference" class="system">
+	<hgroup>
+		<h4><{$title}></h4>
+	</hgroup>	
+	<article class="admin-content">
+		<ul>
+		<{foreach key=dirname item=name from=$modules}>
+		    <li><div style="padding: 5px 0;">
+		            <{$name}>
+		            <a href="<{adminUrl module=system controller=preference action=manage dirname=$dirname}>" title="<{_ text=Manage}>"><{_ text=Manage}></a>
+		        </div>
+		    </li>
+		<{/foreach}>
+		</ul>
+	</article>
+</section>

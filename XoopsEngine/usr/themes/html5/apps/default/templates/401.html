@@ -1,0 +1,22 @@
+<{headLink href="app/default/resources/scripts/exception.css"}>
+
+<section id="401" class="error">
+
+	<hgroup>
+		<h4><{$error_title}></h4>
+	</hgroup>
+	
+	<{if !empty($message)}>
+	<article class="error-content">
+	    <p><{$message}></p>
+	</article>
+	<{/if}>
+	
+	<{if !empty($login)}>
+	<article class="error-content">
+	    <p><a href="<{$login}>"><{_ text="Please login."}></a></p>
+	</article>
+	<{/if}>
+	
+
+</section>

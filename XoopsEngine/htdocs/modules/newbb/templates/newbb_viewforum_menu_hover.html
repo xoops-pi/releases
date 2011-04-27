@@ -1,0 +1,31 @@
+	<div id="forumoption" class="menu">
+	<table><tr><td>
+		<a class="item" href="<{$mark_read}>"><{$smarty.const._MD_MARK_ALL_TOPICS}>&nbsp;<{$smarty.const._MD_MARK_READ}></a>
+		<a class="item" href="<{$mark_unread}>"><{$smarty.const._MD_MARK_ALL_TOPICS}>&nbsp;<{$smarty.const._MD_MARK_UNREAD}></a>
+		<div class="separator"></div>
+		<a class="item" href="<{$post_link}>"><{$smarty.const._MD_VIEW}>&nbsp;<{$smarty.const._MD_ALLPOSTS}></a>
+		<a class="item" href="<{$newpost_link}>"><{$smarty.const._MD_VIEW}>&nbsp;<{$smarty.const._MD_NEWPOSTS}></a>
+	    <a class="item" href="<{$all_link}>"><{$smarty.const._MD_VIEW}>&nbsp;<{$smarty.const._MD_ALL}></a>
+		<a class="item" href="<{$digest_link}>"><{$smarty.const._MD_VIEW}>&nbsp;<{$smarty.const._MD_DIGEST}></a>
+		<a class="item" href="<{$unreplied_link}>"><{$smarty.const._MD_VIEW}>&nbsp;<{$smarty.const._MD_UNREPLIED}></a>
+		<a class="item" href="<{$unread_link}>"><{$smarty.const._MD_VIEW}>&nbsp;<{$smarty.const._MD_UNREAD}></a>
+		<div class="separator"></div>
+		<{foreachq item=menu from=$menumode_other}>
+		<a class="item" href="<{$menu.link}>"><{$menu.title}></a>
+		<{/foreach}>
+	</td></tr></table>
+	</div>
+	<script type="text/javascript">document.getElementById("forumoption").onmouseout = closeMenu;</script>
+	<div class="menubar"><a href="" onclick="openMenu(event, 'forumoption');return false;"><{$smarty.const._MD_FORUMOPTION}></a></div>
+	
+	<{if $type_options}>
+	<div id="type" class="menu">
+	<table><tr><td>
+		<{foreachq item=opt from=$type_options}>
+		<a class="item" href="<{$opt.link}>"><{$opt.title}></a>
+		<{/foreach}>
+	</td></tr></table>
+	</div>
+	<script type="text/javascript">document.getElementById("type").onmouseout = closeMenu;</script>
+	<div class="menubar"><a href="" onclick="openMenu(event, 'type');return false;"><{$smarty.const._MD_NEWBB_TYPE}></a></div>
+	<{/if}>

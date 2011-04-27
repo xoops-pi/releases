@@ -1,0 +1,15 @@
+<{headLink href="app/default/resources/scripts/exception.css"}>
+
+<section id="403" class="error">
+
+	<hgroup>
+		<h4><{$error_title}></h4>
+	</hgroup>
+	
+	<{if !empty($message)}>
+	<article class="error-content">
+	    <p><{$message}></p>
+	</article>    
+	<{/if}>
+	
+</section>

@@ -1,0 +1,24 @@
+<{headLink href="app/user/resources/scripts/profile.css"}>
+
+<section id="profile" class="user profile">
+
+	<hgroup>
+		<h2><{_ text=Account}></h2>
+	</hgroup>
+	
+	<article class="user-content account">
+	    <div class="avatar">
+	        <{$account.avatar}>
+	    </div>
+	    <div class="items">
+	        <span><{$account.id}></span>
+	        <span><{$account.identity}></span>
+	        <span><{$account.name}></span>
+	    </div>
+	</article>
+	
+	<article class="user-content profile-form">
+		<{$xoopsProfile}>
+	</article>
+	
+</section>

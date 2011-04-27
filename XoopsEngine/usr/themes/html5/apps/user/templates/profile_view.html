@@ -1,0 +1,51 @@
+<{headLink href="app/user/resources/scripts/profile.css"}>
+
+<section id="profile" class="user profile">
+
+	<hgroup>
+		<h2><{_ text=Account}></h2>
+	</hgroup>
+	
+	<article class="user-content account">
+	    <div class="avatar">
+	        <{$account.avatar}>
+	    </div>
+	    <div class="items">
+	        <span><{$account.id}></span>
+	        <span><{$account.identity}></span>
+	        <span><{$account.name}></span>
+	    </div>
+	</article>
+	
+	<hgroup>
+		<h2><{_ text=Operations}></h2>
+	</hgroup>
+	
+	<article class="user-content operation">
+	    <{foreach item=op from=$operations}>
+	        <span><a href="<{$op.link}>" title="<{$op.title}>" rel="external"><{$op.title}></a></span>
+	    <{/foreach}>
+	</article>
+
+	<hgroup>
+		<h2><{_ text=Profile}></h2>
+	</hgroup>
+	
+	<section class="detail">
+	    <{foreach item=category from=$profile key=categoryKey}>
+	    <article id="profile-category-<{$categoryKey}>" class="user-content category">
+				
+				<hgroup>
+					<h3><{$category.title}></h3>
+				</hgroup>
+				
+	        <{foreach item=meta from=$category.meta key=metaKey}>
+	        <div id="profile-meta-<{$metaKey}>" class="meta">
+	            <span class="label"><{$meta.title}></span><span class="text"><{$meta.value}></span>
+	        </div>
+	        <{/foreach}>
+	        
+	    </article>
+	    <{/foreach}>
+	</section>
+</section>
