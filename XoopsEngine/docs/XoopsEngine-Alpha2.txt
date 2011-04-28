@@ -23,13 +23,14 @@ Some of the new progresses in Alpha 2:
 * First Xoops Engine themes by insraq and voltan
 Special thank goes to [url=http://xoops.org.cn]Xoops China Team[/url].
 
-
 For more details please check:
 Xoops Engine Development: http://www.xoopsengine.org
 Follow us on twitter: http://twitter.com/XoopsProject
 Discussion: http://xoops.org/modules/newbb/index.php?cat=11
 
-Don't forget to [url=]download Xoops Engine Alpha 2[/url].
+Don't forget to download Xoops Engine Alpha 2:
+* [url=https://github.com/xoops/releases/zipball/Alpha2]The full package[/url]
+* [url=https://github.com/xoops/engine/zipball/Alpha2]Only the new engine[/url]
 And report your issues to: https://github.com/xoops/engine/issues
 
 
