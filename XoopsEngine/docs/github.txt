@@ -15,8 +15,8 @@ Global setup:
 
 Initialize a repo:
 
-  mkdir releases
-  cd releases
+  mkdir engine
+  cd engine
   git init
   touch README
   git add README
